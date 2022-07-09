@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layout_basic/blue_box.dart';
+import 'package:flutter_layout_basic/screens/basic/basic_column_page.dart';
+import 'package:flutter_layout_basic/screens/basic/basic_home_page.dart';
+import 'package:flutter_layout_basic/screens/basic/basic_row_page.dart';
+import 'package:flutter_layout_basic/screens/components/blue_box.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '플러터 UI 연습장',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BasicPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const BasicPage(),
+        '/basic': (context) => const BasicHomePage(),
+        '/basic/row': (context) => const BasicRowPage(),
+        '/basic/column': (context) => const BasicColumnPage(),
+      },
     );
   }
 }
@@ -27,106 +36,17 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Flutter Basic Layout'
+        appBar: AppBar(
+          title: const Text('플러터 UI 연습장'),
         ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('start',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: 24
-            ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-          const Text('end',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: 24
-            ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-          const Text('center',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: 24
-            ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-          const Text('SpaceBetween',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-            fontSize: 24
-          ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-          const Text('SpaceAround',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: 24
-            ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-          const Text('spaceEvenly',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: 24
-            ),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              BlueBox(),
-              BlueBox(),
-              BlueBox(),
-            ],
-          ),
-
-        ],
-      ),
-    );
-  }
-
-  Widget showRowLayout(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        BlueBox(),
-        BlueBox(),
-        BlueBox(),
-      ],
-    );
+        body: ListView(
+          children: [
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/basic');
+                },
+                child: const Text('기본 레이아웃'))
+          ],
+        ));
   }
 }
