@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_basic/screens/basic/basic_column_page.dart';
+import 'package:flutter_layout_basic/screens/basic/basic_flex_page.dart';
 import 'package:flutter_layout_basic/screens/basic/basic_home_page.dart';
 import 'package:flutter_layout_basic/screens/basic/basic_row_page.dart';
+import 'package:flutter_layout_basic/screens/basic/basic_size_page.dart';
+import 'package:flutter_layout_basic/screens/basic/tutorial/basic_tutorial_page.dart';
 import 'package:flutter_layout_basic/screens/components/blue_box.dart';
 
 void main() {
@@ -25,6 +28,9 @@ class MyApp extends StatelessWidget {
         '/basic': (context) => const BasicHomePage(),
         '/basic/row': (context) => const BasicRowPage(),
         '/basic/column': (context) => const BasicColumnPage(),
+        '/basic/flex': (context) => const BasicFlexPage(),
+        '/basic/sizeBox': (context) => const BasicSizeBoxPage(),
+        '/basic/tutorial': (context) => const BasicTutorialPage(),
       },
     );
   }
@@ -40,6 +46,7 @@ class BasicPage extends StatelessWidget {
           title: const Text('플러터 UI 연습장'),
         ),
         body: ListView(
+          padding: const EdgeInsets.all(14.0),
           children: [
             OutlinedButton(
                 onPressed: () {
